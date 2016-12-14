@@ -7,6 +7,8 @@ input python fastjson.py -read to review your hosts
 
 input python fastjson.py -revert to revert your hosts
 
+--------------------------------------------------------------
+
 更新host文件，上网更快，解决访问慢的苦恼
 
 输入 python fastjson.py --github.com 更新hosts文件,github.com 可以是任意域名
