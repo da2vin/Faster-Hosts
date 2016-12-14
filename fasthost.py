@@ -62,6 +62,8 @@ def revert_hosts():
         if not os.path.exists('C:\\hosts_backup\hosts'):
             print 'backup file not exsit!'
         shutil.copyfile(backup_hosts_location, hosts_location)
+        os.system('ipconfig /flushdns')
+        os.system('ipconfig /displaydns')
         print 'revert hosts success!'
     except:
         print 'revert hosts failed!'
@@ -94,6 +96,8 @@ def main(domain):
     if not update_hosts(fast_dns, domain):
         print 'update hosts failed'
         return False
+    os.system('ipconfig /flushdns')
+    os.system('ipconfig /displaydns')
     print 'update host success,now you can fly!'
 
 
@@ -102,12 +106,12 @@ if __name__ == '__main__':
         print 'input --google.com or other domain'
         print 'input -read to review your hosts'
         print 'input -revert to revert your hosts'
+    elif '--' in sys.argv[1] and '.' in sys.argv[1]:
+        main(sys.argv[1][2:])
     elif sys.argv[1] == '-revert':
         revert_hosts()
     elif sys.argv[1] == '-read':
         read_hosts()
-    elif '--' in sys.argv[1]:
-        main(sys.argv[1][2:])
     else:
         print 'input --google.com or other domain'
         print 'input -read to review your hosts'
