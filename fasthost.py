@@ -84,6 +84,7 @@ def read_hosts():
 
 
 def main(domain):
+    print 'start to update your hosts...'
     fast_dns = get_fast_dns(domain)
     if not re.match(r'\d+\.\d+\.\d+\.\d+', fast_dns):
         print 'get fast dns failed'
