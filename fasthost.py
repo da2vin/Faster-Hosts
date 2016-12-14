@@ -29,7 +29,7 @@ def abstract_str(content, start_str, end_str):
     return res
 
 
-def get_fast_dns():
+def get_fast_dns(domain):
     try:
         session = requests.session()
         headers = dict()
@@ -41,7 +41,7 @@ def get_fast_dns():
         headers["Accept-Language"] = "zh-CN,zh;q=0.8"
         headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8"
         session.headers = headers
-        response = session.post("http://ipaddress.com/search/", data='host=github.com')
+        response = session.post("http://ipaddress.com/search/", data='host=' + domain)
         return abstract_str(response.content, '<tr><th>IP Address:</th><td>', '</td></tr>')
     except:
         return ''
@@ -84,7 +84,7 @@ def read_hosts():
 
 
 def main(domain):
-    fast_dns = get_fast_dns()
+    fast_dns = get_fast_dns(domain)
     if not re.match(r'\d+\.\d+\.\d+\.\d+', fast_dns):
         print 'get fast dns failed'
         return False
