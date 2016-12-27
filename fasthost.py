@@ -28,23 +28,23 @@ def abstract_str(content, start_str, end_str):
     return res
 
 
-def get_fast_dns2(domain):
-    try:
-        import requests
-        session = requests.session()
-        headers = dict()
-        headers[
-            "User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
-        headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
-        headers["Referer"] = "http://ipaddress.com/"
-        headers["Accept-Encoding"] = "gzip, deflate, sdch"
-        headers["Accept-Language"] = "zh-CN,zh;q=0.8"
-        headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8"
-        session.headers = headers
-        response = session.post("http://ipaddress.com/search/", data='host=' + domain)
-        return abstract_str(response.content, '<tr><th>IP Address:</th><td>', '</td></tr>')
-    except:
-        return ''
+# def get_fast_dns2(domain):
+#     try:
+#         import requests
+#         session = requests.session()
+#         headers = dict()
+#         headers[
+#             "User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36"
+#         headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+#         headers["Referer"] = "http://ipaddress.com/"
+#         headers["Accept-Encoding"] = "gzip, deflate, sdch"
+#         headers["Accept-Language"] = "zh-CN,zh;q=0.8"
+#         headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8"
+#         session.headers = headers
+#         response = session.post("http://ipaddress.com/search/", data='host=' + domain)
+#         return abstract_str(response.content, '<tr><th>IP Address:</th><td>', '</td></tr>')
+#     except:
+#         return ''
 
 
 def get_fast_dns(domain):
