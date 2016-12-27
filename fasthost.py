@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-import requests
 import re
 import os
 import shutil
@@ -29,8 +28,9 @@ def abstract_str(content, start_str, end_str):
     return res
 
 
-def get_fast_dns(domain):
+def get_fast_dns2(domain):
     try:
+        import requests
         session = requests.session()
         headers = dict()
         headers[
@@ -45,6 +45,13 @@ def get_fast_dns(domain):
         return abstract_str(response.content, '<tr><th>IP Address:</th><td>', '</td></tr>')
     except:
         return ''
+
+
+def get_fast_dns(domain):
+    import socket
+    # myaddr = socket.getaddrinfo("www." + domain, 'http')[0][4][0]
+    myaddr = socket.gethostbyname("www." + domain)
+    return myaddr
 
 
 def backup_hosts():
