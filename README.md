@@ -20,4 +20,3 @@ input python fasthost.py -revert to revert your hosts
 
 输入 python fasthost.py -revert 还原hosts文件
 
-
